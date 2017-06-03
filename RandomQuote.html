@@ -45,10 +45,10 @@ $(document).ready(function() {
 
 	function getQuote() {
 	$.getJSON("https://random-quote-generator.herokuapp.com/api/quotes/random", function(a) {
- 	 var quote = a.quote + " - " + a.quoted;
- 	 var quoted = a.quoted;
+ 	 var quote = a.quote;
+ 	 var quoted = a.author;
  	 document.getElementById("quotebox").innerHTML = quote;
- 	 // document.getElementById("authorbox").innerHTML = quoted;
+ 	 document.getElementById("authorbox").innerHTML = quoted;
  	 document.getElementById("tweety").setAttribute("href", "https://twitter.com/intent/tweet?text=" + quote + " - " + quoted);
 	});
 
