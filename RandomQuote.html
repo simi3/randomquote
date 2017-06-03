@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+
+<!-- HTML notes
+
+- Boilerplate HTML
+- A heading
+- A button
+- A div to display the quote
+- A tweet button
+
+-->
+
+<HTML>
+	<head>
+		<meta charset="utf-8">
+
+		<title>Quotable</title>
+		
+		
+	</head>
+	<body>
+		<div id="quotebox">Waiting</div>
+		<div id ="authorbox">Naming</div>
+		<button id="quotable">Get quote</button>
+		<a id="tweety" class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Hello%20world">Tweet</a>
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	</body>
+
+</html>
+
+<script type="text/javascript">
+
+// Javascript notes
+
+// add an event listener to a button
+// when that button is clicked generate a random number
+// use that random number to match an array of quotes
+// replace the existing quote with the matching quote, and set a variable to that quote
+// each quote can be 'tweeted' by referencing the variable set
+
+$(document).ready(function() {
+
+	function getQuote() {
+	$.getJSON("https://random-quote-generator.herokuapp.com/api/quotes/random", function(a) {
+ 	 var quote = a.quote + " - " + a.quoted;
+ 	 var quoted = a.quoted;
+ 	 document.getElementById("quotebox").innerHTML = quote;
+ 	 // document.getElementById("authorbox").innerHTML = quoted;
+ 	 document.getElementById("tweety").setAttribute("href", "https://twitter.com/intent/tweet?text=" + quote + " - " + quoted);
+	});
+
+	}
+
+	var quoteButton = document.getElementById("quotable");
+	quoteButton.addEventListener("click", getQuote);
+
+});
+
+</script>    
+
