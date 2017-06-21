@@ -13,7 +13,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Quotable</title>
+		<title>Quote machine</title>
 		
 		<link href="https://fonts.googleapis.com/css?family=Sanchez" rel="stylesheet">
 
@@ -39,10 +39,13 @@
 
 			#quotebox {
 				font-size: 40px;
+				margin: 0 0 20px 0;
 			}
 
 			#authorbox {
 				font-size: 24px;
+				margin: 0 0 30px 0;
+
 			}
 
 			a {
@@ -58,6 +61,7 @@
 			}
 
 			.content {
+				height: 70vh;
 				display: flex;
   				align-items: center;
   				justify-content: center;
@@ -67,22 +71,28 @@
 				max-width: 600px;
 			}
 
+			#tweety {
+				margin: 0 30px 0 0;
+			}
+
 
 		</style>
 
 
 	</head>
+
 	<body>
 
 		<div class="header">Quote machine</div>
 
 		<div class="content">
 			<div class="quoterbox">
-				<div id="quotebox">...</div>
-				<div id ="authorbox">...</div>
-				<a href="#" id="quotable">Get quote</a>
+				<div id="quotebox"></div>
+				<div id ="authorbox"></div>
 				<a id="tweety" class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Hello%20world">Tweet</a>
+				<a href="#" id="quotable">Show another quote</a>	
 			</div>	
+			<div></div>
 			
 		</div>
 
@@ -106,12 +116,14 @@ $(document).ready(function() {
 	$.getJSON("https://random-quote-generator.herokuapp.com/api/quotes/random", function(a) {
  	 var quote = a.quote;
  	 var quoted = a.author;
- 	 document.getElementById("quotebox").innerHTML = quote;
+ 	 document.getElementById("quotebox").innerHTML = '"' + quote + '"';
  	 document.getElementById("authorbox").innerHTML = "- " + quoted;
  	 document.getElementById("tweety").setAttribute("href", "https://twitter.com/intent/tweet?text=" + quote + " - " + quoted);
 	});
 
 	}
+
+	getQuote();
 
 	var quoteButton = document.getElementById("quotable");
 	quoteButton.addEventListener("click", getQuote);
