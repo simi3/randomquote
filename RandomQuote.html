@@ -2,7 +2,6 @@
 
 <!-- HTML notes
 
-- Boilerplate HTML
 - A heading
 - A button
 - A div to display the quote
@@ -16,20 +15,80 @@
 
 		<title>Quotable</title>
 		
-		
+		<link href="https://fonts.googleapis.com/css?family=Sanchez" rel="stylesheet">
+
+		<style>
+			html {
+				height: 100%;
+			}
+			body {
+				padding: 40px 40px;
+				font-family: 'Sanchez', serif;
+				color: #4C5263;
+				background: #C9E6F4;  /* fallback for old browsers */
+				background: -webkit-linear-gradient(to bottom, #C9E6F4, #FAF0EC);  /* Chrome 10-25, Safari 5.1-6 */
+				background: linear-gradient(to bottom, #C9E6F4, #FAF0EC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+			}
+
+			.header {
+				display: inline-block;
+				border-bottom: 1px solid #2B303A;
+				padding-bottom: 5px;
+				color: #2B303A;
+			}
+
+			#quotebox {
+				font-size: 40px;
+			}
+
+			#authorbox {
+				font-size: 24px;
+			}
+
+			a {
+				color: #3EC0FF;
+				font-size: 20px;
+				text-decoration: none;
+			}
+
+			a:hover {
+				color: #3EC0FF;
+				font-size: 20px;
+				text-decoration: underline;
+			}
+
+			.content {
+				display: flex;
+  				align-items: center;
+  				justify-content: center;
+			}
+
+			.quoterbox {
+				max-width: 600px;
+			}
+
+
+		</style>
+
+
 	</head>
 	<body>
-		<div id="quotebox">Waiting</div>
-		<div id ="authorbox">Naming</div>
-		<button id="quotable">Get quote</button>
-		<a id="tweety" class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Hello%20world">Tweet</a>
 
+		<div class="header">Quote machine</div>
+
+		<div class="content">
+			<div class="quoterbox">
+				<div id="quotebox">...</div>
+				<div id ="authorbox">...</div>
+				<a href="#" id="quotable">Get quote</a>
+				<a id="tweety" class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Hello%20world">Tweet</a>
+			</div>	
+			
+		</div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	</body>
-
-</html>
 
 <script type="text/javascript">
 
@@ -48,7 +107,7 @@ $(document).ready(function() {
  	 var quote = a.quote;
  	 var quoted = a.author;
  	 document.getElementById("quotebox").innerHTML = quote;
- 	 document.getElementById("authorbox").innerHTML = quoted;
+ 	 document.getElementById("authorbox").innerHTML = "- " + quoted;
  	 document.getElementById("tweety").setAttribute("href", "https://twitter.com/intent/tweet?text=" + quote + " - " + quoted);
 	});
 
@@ -59,5 +118,9 @@ $(document).ready(function() {
 
 });
 
-</script>    
+</script> 
+
+</html>
+
+   
 
